@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,14 +49,17 @@ namespace August2023.Pages
 
             IWebElement NewCode = driver.FindElement(By.XPath("//*[@id=\"tmsGrid\"]/div[3]/table/tbody/tr[last()]/td[1]"));
 
-            if (NewCode.Text == "August2023")
-            {
-                Console.WriteLine("New Time record has been created successfully");
-            }
-            else
-            {
-                Console.WriteLine("Time record has not been created");
-            }
+
+            Assert.That(NewCode.Text == "August2023","Time Record has not been created successfully");
+
+            //if (NewCode.Text == "August2023")
+            //{
+            //    Assert.Pass("New Time record has been created successfully");
+            //}
+            //else
+            //{
+            //    Assert.Fail("Time record has not been created");
+            //}
         }
         public void EditTimeRecord(IWebDriver driver)
         {
